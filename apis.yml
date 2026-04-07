@@ -4,8 +4,7 @@ url: >-
 apis:
   - aid: agechecker-net:agechecker-net
     name: AgeChecker.Net
-    tags:
-      - API
+    tags: []
     humanURL: ' https://agechecker.net/age-verification-api'
     properties:
       - url: ' https://agechecker.net/age-verification-api'
