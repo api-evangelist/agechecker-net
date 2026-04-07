@@ -11,11 +11,11 @@ apis:
       - url: ' https://agechecker.net/age-verification-api'
         type: Documentation
     description: >-
-      Our API can be used to provide a seamless verification experience for most
-      customers. Send the customers data directly to us and only show the popup
-      if a photo ID is required. Most customers wont even know they were
-      verified, and those who require photo ID verification can get verified
-      easily with our simple upload options.  
+      Our API can be used to provide a seamless verification experience for most customers.
+      Send the customers data directly to us and only show the popup if a photo ID
+      is required. Most customers wont even know they were verified, and those who
+      require photo ID verification can get verified easily with our simple upload
+      options.
 name: AgeChecker.Net
 tags:
   - Age
@@ -27,11 +27,10 @@ created: '2025-01-07'
 modified: '2026-03-16'
 position: Consuming
 description: >-
-  Our API can be used to provide a seamless verification experience for most
-  customers. Send the customers data directly to us and only show the popup if a
-  photo ID is required. Most customers wont even know they were verified, and
-  those who require photo ID verification can get verified easily with our
-  simple upload options.  
+  Our API can be used to provide a seamless verification experience for most customers.
+  Send the customers data directly to us and only show the popup if a photo ID is
+  required. Most customers wont even know they were verified, and those who require
+  photo ID verification can get verified easily with our simple upload options.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
