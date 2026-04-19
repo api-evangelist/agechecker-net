@@ -1,0 +1,452 @@
+openapi: 3.1.0
+info:
+  title: AgeChecker.Net Age Verification API
+  description: >-
+    The AgeChecker.Net API provides seamless age verification for online transactions.
+    Send customer data directly to verify age without requiring a popup for most customers.
+    Only customers requiring photo ID will be prompted for additional verification.
+  version: "1.0"
+  contact:
+    name: AgeChecker.Net Support
+    url: https://agechecker.net/contact
+  termsOfService: https://agechecker.net/terms
+servers:
+- url: https://api.agechecker.net/v1
+  description: AgeChecker.Net API
+
+security:
+- apiKey: []
+
+paths:
+  /verify:
+    post:
+      operationId: verify-age
+      summary: AgeChecker.Net Verify Age
+      description: Submit customer data for age verification. Returns pass/fail result and whether photo ID is required.
+      tags:
+      - Verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerificationRequest'
+            examples:
+              VerifyAgeRequest:
+                summary: Verify age request
+                value:
+                  first_name: John
+                  last_name: Doe
+                  birth_date: "1990-05-15"
+                  address: "123 Main St"
+                  city: "Springfield"
+                  state: "IL"
+                  zip: "62701"
+                  email: "john.doe@example.com"
+                  ip_address: "192.168.1.1"
+                x-microcks-default: true
+      responses:
+        '200':
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+              examples:
+                VerifyAgeResponse:
+                  summary: Successful verification response
+                  value:
+                    result: pass
+                    session_id: "sess_abc123def456"
+                    requires_photo_id: false
+                    age_verified: true
+                    minimum_age: 21
+                  x-microcks-default: true
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                verify-age400Example:
+                  summary: Default verify-age 400 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    message: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                verify-age401Example:
+                  summary: Default verify-age 401 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    message: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /sessions/{sessionId}:
+    get:
+      operationId: get-verification-session
+      summary: AgeChecker.Net Get Verification Session
+      description: Retrieve the status and result of a verification session by session ID.
+      tags:
+      - Sessions
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique session identifier returned from a verification request.
+        example: example_value
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              examples:
+                GetSessionResponse:
+                  summary: Session details response
+                  value:
+                    session_id: "sess_abc123def456"
+                    status: completed
+                    result: pass
+                    age_verified: true
+                    requires_photo_id: false
+                    created_at: "2026-04-19T10:00:00Z"
+                    completed_at: "2026-04-19T10:00:02Z"
+                  x-microcks-default: true
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                get-verification-session404Example:
+                  summary: Default get-verification-session 404 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    message: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /sessions:
+    get:
+      operationId: list-verification-sessions
+      summary: AgeChecker.Net List Verification Sessions
+      description: List verification sessions for the account with optional filtering by date range and result.
+      tags:
+      - Sessions
+      parameters:
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: Start timestamp for filtering sessions.
+        example: '2025-03-15T14:30:00Z'
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: End timestamp for filtering sessions.
+        example: '2025-03-15T14:30:00Z'
+      - name: result
+        in: query
+        schema:
+          type: string
+          enum: [pass, fail, pending]
+        description: Filter sessions by result.
+        example: pass
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+        description: Maximum number of sessions to return.
+        example: 1
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Offset for pagination.
+        example: 1
+      responses:
+        '200':
+          description: List of verification sessions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionList'
+              examples:
+                ListSessionsResponse:
+                  summary: List of sessions
+                  value:
+                    sessions:
+                    - session_id: "sess_abc123def456"
+                      status: completed
+                      result: pass
+                      created_at: "2026-04-19T10:00:00Z"
+                    total: 1
+                    limit: 100
+                    offset: 0
+                  x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+  /webhook:
+    post:
+      operationId: configure-webhook
+      summary: AgeChecker.Net Configure Webhook
+      description: Configure a webhook URL to receive verification result notifications.
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfig'
+            examples:
+              ConfigureWebhookRequest:
+                summary: Webhook configuration request
+                value:
+                  url: "https://yourapp.com/webhooks/agechecker"
+                  events:
+                  - verification.completed
+                  - verification.failed
+                  secret: "whsec_yoursecretkey"
+                x-microcks-default: true
+      responses:
+        '200':
+          description: Webhook configured successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfig'
+              examples:
+                ConfigureWebhookResponse:
+                  summary: Webhook configuration response
+                  value:
+                    id: "wh_xyz789"
+                    url: "https://yourapp.com/webhooks/agechecker"
+                    events:
+                    - verification.completed
+                    - verification.failed
+                    created_at: "2026-04-19T10:00:00Z"
+                  x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+
+components:
+  schemas:
+    VerificationRequest:
+      type: object
+      required:
+      - first_name
+      - last_name
+      - birth_date
+      properties:
+        first_name:
+          type: string
+          description: Customer first name.
+          example: Example Name
+        last_name:
+          type: string
+          description: Customer last name.
+          example: Example Name
+        birth_date:
+          type: string
+          format: date
+          description: Customer date of birth (YYYY-MM-DD).
+          example: '2025-03-15'
+        address:
+          type: string
+          description: Street address.
+          example: example_value
+        city:
+          type: string
+          description: City.
+          example: example_value
+        state:
+          type: string
+          description: State or province code.
+          example: example_value
+        zip:
+          type: string
+          description: Postal/ZIP code.
+          example: example_value
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          default: US
+          example: example_value
+        email:
+          type: string
+          format: email
+          description: Customer email address.
+          example: admin@example.com
+        phone:
+          type: string
+          description: Customer phone number.
+          example: example_value
+        ip_address:
+          type: string
+          description: Customer's IP address.
+          example: example_value
+        minimum_age:
+          type: integer
+          description: Minimum age required (default is 21 for alcohol, 18 for tobacco).
+          default: 21
+
+          example: 1
+    VerificationResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          enum: [pass, fail, pending]
+          description: Verification outcome.
+          example: pass
+        session_id:
+          type: string
+          description: Unique session identifier for this verification.
+          example: '500123'
+        requires_photo_id:
+          type: boolean
+          description: Whether the customer must upload a photo ID to complete verification.
+          example: true
+        age_verified:
+          type: boolean
+          description: Whether age was successfully verified.
+          example: true
+        minimum_age:
+          type: integer
+          description: The minimum age threshold checked.
+          example: 1
+        redirect_url:
+          type: string
+          description: URL to redirect customer if photo ID is required.
+
+          example: https://example.com
+    Session:
+      type: object
+      properties:
+        session_id:
+          type: string
+          description: Unique session identifier.
+          example: '500123'
+        status:
+          type: string
+          enum: [pending, completed, expired]
+          description: Current session status.
+          example: pending
+        result:
+          type: string
+          enum: [pass, fail]
+          description: Verification result.
+          example: pass
+        age_verified:
+          type: boolean
+          description: Whether age was verified.
+          example: true
+        requires_photo_id:
+          type: boolean
+          description: Whether photo ID was required.
+          example: true
+        created_at:
+          type: string
+          format: date-time
+          description: When the session was created.
+          example: '2025-03-15T14:30:00Z'
+        completed_at:
+          type: string
+          format: date-time
+          description: When the session was completed.
+
+          example: '2025-03-15T14:30:00Z'
+    SessionList:
+      type: object
+      properties:
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+          example:
+          - example_value
+        total:
+          type: integer
+          description: Total number of matching sessions.
+          example: 1
+        limit:
+          type: integer
+          description: Page size.
+          example: 1
+        offset:
+          type: integer
+          description: Page offset.
+
+          example: 1
+    WebhookConfig:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Webhook configuration identifier.
+          example: '500123'
+        url:
+          type: string
+          description: URL to receive webhook events.
+          example: https://example.com
+        events:
+          type: array
+          items:
+            type: string
+          description: List of event types to receive.
+          example:
+          - example_value
+        secret:
+          type: string
+          description: Shared secret for webhook signature verification.
+          example: example_value
+        created_at:
+          type: string
+          format: date-time
+          description: When the webhook was configured.
+
+          example: '2025-03-15T14:30:00Z'
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+
+          example: example_value
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for AgeChecker.Net API access.

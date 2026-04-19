@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-structure/age-verification-session-list-structure.json",
+  "name": "SessionList",
+  "description": "SessionList schema from AgeChecker.Net API",
+  "type": "object",
+  "properties": {
+    "sessions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Session"
+      },
+      "example": [
+        "example_value"
+      ]
+    },
+    "total": {
+      "type": "int32",
+      "description": "Total number of matching sessions.",
+      "example": 1
+    },
+    "limit": {
+      "type": "int32",
+      "description": "Page size.",
+      "example": 1
+    },
+    "offset": {
+      "type": "int32",
+      "description": "Page offset.",
+      "example": 1
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "first_name": "Example Name",
+  "last_name": "Example Name",
+  "birth_date": "2025-03-15",
+  "address": "example_value",
+  "city": "example_value",
+  "state": "example_value",
+  "zip": "example_value",
+  "country": "example_value",
+  "email": "admin@example.com",
+  "phone": "example_value",
+  "ip_address": "example_value",
+  "minimum_age": 1
+}

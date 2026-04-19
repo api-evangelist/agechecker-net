@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-schema/age-verification-webhook-config-schema.json",
+  "title": "WebhookConfig",
+  "description": "WebhookConfig schema from AgeChecker.Net API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Webhook configuration identifier.",
+      "example": "500123"
+    },
+    "url": {
+      "type": "string",
+      "description": "URL to receive webhook events.",
+      "example": "https://example.com"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of event types to receive.",
+      "example": [
+        "example_value"
+      ]
+    },
+    "secret": {
+      "type": "string",
+      "description": "Shared secret for webhook signature verification.",
+      "example": "example_value"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the webhook was configured.",
+      "example": "2025-03-15T14:30:00Z"
+    }
+  }
+}

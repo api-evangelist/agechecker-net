@@ -1,0 +1,8 @@
+{
+  "result": "pass",
+  "session_id": "500123",
+  "requires_photo_id": true,
+  "age_verified": true,
+  "minimum_age": 1,
+  "redirect_url": "https://example.com"
+}

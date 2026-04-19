@@ -1,0 +1,9 @@
+{
+  "id": "500123",
+  "url": "https://example.com",
+  "events": [
+    "example_value"
+  ],
+  "secret": "example_value",
+  "created_at": "2025-03-15T14:30:00Z"
+}

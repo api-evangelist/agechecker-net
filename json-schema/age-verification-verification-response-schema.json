@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-schema/age-verification-verification-response-schema.json",
+  "title": "VerificationResponse",
+  "description": "VerificationResponse schema from AgeChecker.Net API",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "pending"
+      ],
+      "description": "Verification outcome.",
+      "example": "pass"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier for this verification.",
+      "example": "500123"
+    },
+    "requires_photo_id": {
+      "type": "boolean",
+      "description": "Whether the customer must upload a photo ID to complete verification.",
+      "example": true
+    },
+    "age_verified": {
+      "type": "boolean",
+      "description": "Whether age was successfully verified.",
+      "example": true
+    },
+    "minimum_age": {
+      "type": "integer",
+      "description": "The minimum age threshold checked.",
+      "example": 1
+    },
+    "redirect_url": {
+      "type": "string",
+      "description": "URL to redirect customer if photo ID is required.",
+      "example": "https://example.com"
+    }
+  }
+}

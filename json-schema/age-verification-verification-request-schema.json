@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-schema/age-verification-verification-request-schema.json",
+  "title": "VerificationRequest",
+  "description": "VerificationRequest schema from AgeChecker.Net API",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "Customer first name.",
+      "example": "Example Name"
+    },
+    "last_name": {
+      "type": "string",
+      "description": "Customer last name.",
+      "example": "Example Name"
+    },
+    "birth_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Customer date of birth (YYYY-MM-DD).",
+      "example": "2025-03-15"
+    },
+    "address": {
+      "type": "string",
+      "description": "Street address.",
+      "example": "example_value"
+    },
+    "city": {
+      "type": "string",
+      "description": "City.",
+      "example": "example_value"
+    },
+    "state": {
+      "type": "string",
+      "description": "State or province code.",
+      "example": "example_value"
+    },
+    "zip": {
+      "type": "string",
+      "description": "Postal/ZIP code.",
+      "example": "example_value"
+    },
+    "country": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code.",
+      "default": "US",
+      "example": "example_value"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Customer email address.",
+      "example": "admin@example.com"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Customer phone number.",
+      "example": "example_value"
+    },
+    "ip_address": {
+      "type": "string",
+      "description": "Customer's IP address.",
+      "example": "example_value"
+    },
+    "minimum_age": {
+      "type": "integer",
+      "description": "Minimum age required (default is 21 for alcohol, 18 for tobacco).",
+      "default": 21,
+      "example": 1
+    }
+  },
+  "required": [
+    "first_name",
+    "last_name",
+    "birth_date"
+  ]
+}

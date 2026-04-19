@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-structure/age-verification-session-structure.json",
+  "name": "Session",
+  "description": "Session schema from AgeChecker.Net API",
+  "type": "object",
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier.",
+      "example": "500123"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "completed",
+        "expired"
+      ],
+      "description": "Current session status.",
+      "example": "pending"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ],
+      "description": "Verification result.",
+      "example": "pass"
+    },
+    "age_verified": {
+      "type": "boolean",
+      "description": "Whether age was verified.",
+      "example": true
+    },
+    "requires_photo_id": {
+      "type": "boolean",
+      "description": "Whether photo ID was required.",
+      "example": true
+    },
+    "created_at": {
+      "type": "datetime",
+      "description": "When the session was created.",
+      "example": "2025-03-15T14:30:00Z"
+    },
+    "completed_at": {
+      "type": "datetime",
+      "description": "When the session was completed.",
+      "example": "2025-03-15T14:30:00Z"
+    }
+  }
+}

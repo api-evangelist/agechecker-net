@@ -1,0 +1,119 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "agechecker-net": "https://agechecker-net.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "VerificationResponse": "agechecker-net:VerificationResponse",
+    "result": {
+      "@id": "agechecker-net:result",
+      "@type": "xsd:string"
+    },
+    "sessionId": {
+      "@id": "agechecker-net:session_id",
+      "@type": "xsd:string"
+    },
+    "requiresPhotoId": {
+      "@id": "agechecker-net:requires_photo_id",
+      "@type": "xsd:boolean"
+    },
+    "ageVerified": {
+      "@id": "agechecker-net:age_verified",
+      "@type": "xsd:boolean"
+    },
+    "minimumAge": {
+      "@id": "agechecker-net:minimum_age",
+      "@type": "xsd:integer"
+    },
+    "redirectUrl": {
+      "@id": "agechecker-net:redirect_url",
+      "@type": "xsd:string"
+    },
+    "Session": "agechecker-net:Session",
+    "status": {
+      "@id": "agechecker-net:status",
+      "@type": "xsd:string"
+    },
+    "createdAt": "schema:dateCreated",
+    "completedAt": {
+      "@id": "agechecker-net:completed_at",
+      "@type": "xsd:dateTime"
+    },
+    "VerificationRequest": "agechecker-net:VerificationRequest",
+    "firstName": {
+      "@id": "agechecker-net:first_name",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "agechecker-net:last_name",
+      "@type": "xsd:string"
+    },
+    "birthDate": {
+      "@id": "agechecker-net:birth_date",
+      "@type": "xsd:date"
+    },
+    "address": {
+      "@id": "agechecker-net:address",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "agechecker-net:city",
+      "@type": "xsd:string"
+    },
+    "state": {
+      "@id": "agechecker-net:state",
+      "@type": "xsd:string"
+    },
+    "zip": {
+      "@id": "agechecker-net:zip",
+      "@type": "xsd:string"
+    },
+    "country": {
+      "@id": "agechecker-net:country",
+      "@type": "xsd:string"
+    },
+    "email": "schema:email",
+    "phone": {
+      "@id": "agechecker-net:phone",
+      "@type": "xsd:string"
+    },
+    "ipAddress": {
+      "@id": "agechecker-net:ip_address",
+      "@type": "xsd:string"
+    },
+    "SessionList": "agechecker-net:SessionList",
+    "sessions": {
+      "@id": "agechecker-net:sessions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "total": {
+      "@id": "agechecker-net:total",
+      "@type": "xsd:integer"
+    },
+    "limit": {
+      "@id": "agechecker-net:limit",
+      "@type": "xsd:integer"
+    },
+    "offset": {
+      "@id": "agechecker-net:offset",
+      "@type": "xsd:integer"
+    },
+    "WebhookConfig": "agechecker-net:WebhookConfig",
+    "id": {
+      "@id": "agechecker-net:id",
+      "@type": "xsd:string"
+    },
+    "url": "schema:url",
+    "events": {
+      "@id": "agechecker-net:events",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "secret": {
+      "@id": "agechecker-net:secret",
+      "@type": "xsd:string"
+    }
+  }
+}

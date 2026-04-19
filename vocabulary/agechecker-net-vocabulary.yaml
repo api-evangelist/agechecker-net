@@ -1,0 +1,196 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "AgeChecker.Net"
+  description: "Unified taxonomy of the AgeChecker.Net Age Verification API covering age verification, session management, and webhook notifications for e-commerce compliance."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: agechecker-net-age-verification-api
+      name: AgeChecker.Net Age Verification API
+      version: "1.0"
+      baseUrl: https://api.agechecker.net/v1
+      status: active
+
+  resources:
+    - name: verification
+      description: "Age verification request and result for a customer transaction."
+      apis:
+        - agechecker-net-age-verification-api
+      actions:
+        - verify
+    - name: sessions
+      description: "Verification sessions tracking the status and result of age verification attempts."
+      apis:
+        - agechecker-net-age-verification-api
+      actions:
+        - list
+        - get
+    - name: webhooks
+      description: "Webhook configurations for receiving real-time verification event notifications."
+      apis:
+        - agechecker-net-age-verification-api
+      actions:
+        - configure
+
+  actions:
+    - name: verify
+      description: "Submit customer data for age verification."
+      httpMethod: POST
+      pattern: create
+    - name: list
+      description: "List verification sessions."
+      httpMethod: GET
+      pattern: read
+    - name: get
+      description: "Retrieve a specific verification session."
+      httpMethod: GET
+      pattern: read
+    - name: configure
+      description: "Configure webhook notification settings."
+      httpMethod: POST
+      pattern: create
+
+  schemas:
+    core:
+      - name: VerificationRequest
+        description: "Customer data submitted for age verification."
+        api: agechecker-net-age-verification-api
+      - name: VerificationResponse
+        description: "Age verification outcome including result and session reference."
+        api: agechecker-net-age-verification-api
+    session:
+      - name: Session
+        description: "Age verification session with status tracking."
+        api: agechecker-net-age-verification-api
+      - name: SessionList
+        description: "Paginated list of verification sessions."
+        api: agechecker-net-age-verification-api
+    webhook:
+      - name: WebhookConfig
+        description: "Webhook configuration for event notifications."
+        api: agechecker-net-age-verification-api
+
+  parameters:
+    pagination:
+      - name: limit
+        description: "Maximum number of results per page."
+        type: integer
+      - name: offset
+        description: "Offset for pagination."
+        type: integer
+    identifiers:
+      - name: sessionId
+        description: "Verification session identifier."
+        type: string
+    filters:
+      - name: from
+        description: "Start timestamp for time-range queries."
+        type: string
+      - name: to
+        description: "End timestamp for time-range queries."
+        type: string
+      - name: result
+        description: "Filter sessions by result (pass, fail, pending)."
+        type: string
+
+  enums:
+    verification-results:
+      - pass
+      - fail
+      - pending
+    session-statuses:
+      - pending
+      - completed
+      - expired
+    webhook-events:
+      - verification.completed
+      - verification.failed
+
+  authentication:
+    schemes:
+      - type: apiKey
+        description: "API key authentication via X-API-Key header."
+        apis:
+          - agechecker-net-age-verification-api
+
+capability:
+  workflows:
+    - name: Age Verification
+      file: capabilities/age-verification.yaml
+      description: "End-to-end age verification workflow for e-commerce businesses selling age-restricted products."
+      apisComposed:
+        - agechecker-net-age-verification-api
+      toolCount: 4
+      personas:
+        - compliance-officer
+        - e-commerce-developer
+
+  personas:
+    - id: compliance-officer
+      name: Compliance Officer
+      description: "Regulatory compliance officer ensuring age verification requirements are met for restricted product sales."
+      workflows:
+        - Age Verification
+    - id: e-commerce-developer
+      name: E-Commerce Developer
+      description: "Developer integrating age verification into online checkout flows for age-restricted products."
+      workflows:
+        - Age Verification
+
+  domains:
+    - name: Age Verification
+      description: "Customer age verification for regulated product purchases."
+      resources:
+        - verification
+    - name: Session Management
+      description: "Tracking and auditing age verification session history."
+      resources:
+        - sessions
+    - name: Event Notifications
+      description: "Webhook-based real-time notifications for verification outcomes."
+      resources:
+        - webhooks
+
+  namespaces:
+    consumed:
+      - agechecker-net-age-verification-api
+    rest:
+      - name: agechecker-net-verification-api
+        port: 8080
+    mcp:
+      - name: agechecker-net-verification-mcp
+        port: 9090
+
+  binds:
+    - name: AGECHECKER_API_KEY
+      description: "API key for AgeChecker.Net Age Verification API authentication."
+      usedIn:
+        - Age Verification
+
+crossReference:
+  - resource: verification
+    operations:
+      - verify-age
+    workflows:
+      - Age Verification
+    personas:
+      - compliance-officer
+      - e-commerce-developer
+  - resource: sessions
+    operations:
+      - get-verification-session
+      - list-verification-sessions
+    workflows:
+      - Age Verification
+    personas:
+      - compliance-officer
+  - resource: webhooks
+    operations:
+      - configure-webhook
+    workflows:
+      - Age Verification
+    personas:
+      - e-commerce-developer
