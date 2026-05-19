@@ -1,0 +1,147 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AgeChecker.Net Age Verification API — Sessions
+  description: 'AgeChecker.Net Age Verification API — Sessions. 2 operations. Lead operation: AgeChecker.Net List Verification
+    Sessions. Self-contained Naftiko capability covering one Agechecker Net business surface.'
+  tags:
+  - Agechecker Net
+  - Sessions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AGECHECKER_NET_API_KEY: AGECHECKER_NET_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: age-verification-sessions
+    baseUri: https://api.agechecker.net/v1
+    description: AgeChecker.Net Age Verification API — Sessions business capability. Self-contained, no shared references.
+    resources:
+    - name: sessions
+      path: /sessions
+      operations:
+      - name: listverificationsessions
+        method: GET
+        description: AgeChecker.Net List Verification Sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: from
+          in: query
+          type: string
+          description: Start timestamp for filtering sessions.
+        - name: to
+          in: query
+          type: string
+          description: End timestamp for filtering sessions.
+        - name: result
+          in: query
+          type: string
+          description: Filter sessions by result.
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of sessions to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Offset for pagination.
+    - name: sessions-sessionId
+      path: /sessions/{sessionId}
+      operations:
+      - name: getverificationsession
+        method: GET
+        description: AgeChecker.Net Get Verification Session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sessionId
+          in: path
+          type: string
+          description: The unique session identifier returned from a verification request.
+          required: true
+    authentication:
+      type: apikey
+      key: X-API-Key
+      value: '{{env.AGECHECKER_NET_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: age-verification-sessions-rest
+    port: 8080
+    description: REST adapter for AgeChecker.Net Age Verification API — Sessions. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/sessions
+      name: sessions
+      description: REST surface for sessions.
+      operations:
+      - method: GET
+        name: listverificationsessions
+        description: AgeChecker.Net List Verification Sessions
+        call: age-verification-sessions.listverificationsessions
+        with:
+          from: rest.from
+          to: rest.to
+          result: rest.result
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sessions/{sessionid}
+      name: sessions-sessionid
+      description: REST surface for sessions-sessionId.
+      operations:
+      - method: GET
+        name: getverificationsession
+        description: AgeChecker.Net Get Verification Session
+        call: age-verification-sessions.getverificationsession
+        with:
+          sessionId: rest.sessionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: age-verification-sessions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AgeChecker.Net Age Verification API — Sessions. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: agechecker-net-list-verification-sessions
+      description: AgeChecker.Net List Verification Sessions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: age-verification-sessions.listverificationsessions
+      with:
+        from: tools.from
+        to: tools.to
+        result: tools.result
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: agechecker-net-get-verification-session
+      description: AgeChecker.Net Get Verification Session
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: age-verification-sessions.getverificationsession
+      with:
+        sessionId: tools.sessionId
+      outputParameters:
+      - type: object
+        mapping: $.
