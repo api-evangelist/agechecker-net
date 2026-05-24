@@ -98,3 +98,5 @@ common:
   type: Vocabulary
 - type: Integrations
   url: https://agechecker.net/integrations
+- type: LLMsTxt
+  url: https://agechecker.net/llms.txt
