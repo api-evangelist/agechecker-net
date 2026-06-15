@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AgeChecker.Net Age Verification API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgeChecker.Net Verify Age",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agechecker.net/v1/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit customer data for age verification. Returns pass/fail result and whether photo ID is required."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgeChecker.Net Get Verification Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agechecker.net/v1/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "example_value",
+                "type": "path",
+                "description": "The unique session identifier returned from a verification request."
+              }
+            ]
+          },
+          "docs": "Retrieve the status and result of a verification session by session ID."
+        },
+        {
+          "info": {
+            "name": "AgeChecker.Net List Verification Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.agechecker.net/v1/sessions",
+            "params": [
+              {
+                "name": "from",
+                "value": "2025-03-15T14:30:00Z",
+                "type": "query",
+                "description": "Start timestamp for filtering sessions."
+              },
+              {
+                "name": "to",
+                "value": "2025-03-15T14:30:00Z",
+                "type": "query",
+                "description": "End timestamp for filtering sessions."
+              },
+              {
+                "name": "result",
+                "value": "pass",
+                "type": "query",
+                "description": "Filter sessions by result."
+              },
+              {
+                "name": "limit",
+                "value": "1",
+                "type": "query",
+                "description": "Maximum number of sessions to return."
+              },
+              {
+                "name": "offset",
+                "value": "1",
+                "type": "query",
+                "description": "Offset for pagination."
+              }
+            ]
+          },
+          "docs": "List verification sessions for the account with optional filtering by date range and result."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgeChecker.Net Configure Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agechecker.net/v1/webhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Configure a webhook URL to receive verification result notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
