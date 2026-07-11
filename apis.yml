@@ -65,6 +65,10 @@ integrations:
   - Magento Age Check Integration
   - Custom E-Commerce Platform Integration
 common:
+  - type: DomainSecurity
+    url: security/agechecker-net-domain-security.yml
+  - type: Authentication
+    url: authentication/agechecker-net-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/agechecker
   - url: https://agechecker.net
