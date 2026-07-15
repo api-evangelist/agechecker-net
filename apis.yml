@@ -65,6 +65,8 @@ integrations:
   - Magento Age Check Integration
   - Custom E-Commerce Platform Integration
 common:
+  - type: AgenticAccess
+    url: agentic-access/agechecker-net-agentic-access.yml
   - type: DomainSecurity
     url: security/agechecker-net-domain-security.yml
   - type: Authentication
