@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: AgeChecker.Net Age Verification Sessions Webhooks API
+  description: The AgeChecker.Net API provides seamless age verification for online transactions. Send customer data directly to verify age without requiring a popup for most customers. Only customers requiring photo ID will be prompted for additional verification.
+  version: '1.0'
+  contact:
+    name: AgeChecker.Net Support
+    url: https://agechecker.net/contact
+  termsOfService: https://agechecker.net/terms
+servers:
+- url: https://api.agechecker.net/v1
+  description: AgeChecker.Net API
+security:
+- apiKey: []
+tags:
+- name: Webhooks
+paths:
+  /webhook:
+    post:
+      operationId: configure-webhook
+      summary: AgeChecker.Net Configure Webhook
+      description: Configure a webhook URL to receive verification result notifications.
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookConfig'
+            examples:
+              ConfigureWebhookRequest:
+                summary: Webhook configuration request
+                value:
+                  url: https://yourapp.com/webhooks/agechecker
+                  events:
+                  - verification.completed
+                  - verification.failed
+                  secret: whsec_yoursecretkey
+                x-microcks-default: true
+      responses:
+        '200':
+          description: Webhook configured successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookConfig'
+              examples:
+                ConfigureWebhookResponse:
+                  summary: Webhook configuration response
+                  value:
+                    id: wh_xyz789
+                    url: https://yourapp.com/webhooks/agechecker
+                    events:
+                    - verification.completed
+                    - verification.failed
+                    created_at: '2026-04-19T10:00:00Z'
+                  x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    WebhookConfig:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Webhook configuration identifier.
+          example: '500123'
+        url:
+          type: string
+          description: URL to receive webhook events.
+          example: https://example.com
+        events:
+          type: array
+          items:
+            type: string
+          description: List of event types to receive.
+          example:
+          - example_value
+        secret:
+          type: string
+          description: Shared secret for webhook signature verification.
+          example: example_value
+        created_at:
+          type: string
+          format: date-time
+          description: When the webhook was configured.
+          example: '2025-03-15T14:30:00Z'
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for AgeChecker.Net API access.

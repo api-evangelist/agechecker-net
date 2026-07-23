@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: AgeChecker.Net Age Verification Sessions API
+  description: The AgeChecker.Net API provides seamless age verification for online transactions. Send customer data directly to verify age without requiring a popup for most customers. Only customers requiring photo ID will be prompted for additional verification.
+  version: '1.0'
+  contact:
+    name: AgeChecker.Net Support
+    url: https://agechecker.net/contact
+  termsOfService: https://agechecker.net/terms
+servers:
+- url: https://api.agechecker.net/v1
+  description: AgeChecker.Net API
+security:
+- apiKey: []
+tags:
+- name: Sessions
+paths:
+  /sessions/{sessionId}:
+    get:
+      operationId: get-verification-session
+      summary: AgeChecker.Net Get Verification Session
+      description: Retrieve the status and result of a verification session by session ID.
+      tags:
+      - Sessions
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique session identifier returned from a verification request.
+        example: example_value
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              examples:
+                GetSessionResponse:
+                  summary: Session details response
+                  value:
+                    session_id: sess_abc123def456
+                    status: completed
+                    result: pass
+                    age_verified: true
+                    requires_photo_id: false
+                    created_at: '2026-04-19T10:00:00Z'
+                    completed_at: '2026-04-19T10:00:02Z'
+                  x-microcks-default: true
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                get-verification-session404Example:
+                  summary: Default get-verification-session 404 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    message: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sessions:
+    get:
+      operationId: list-verification-sessions
+      summary: AgeChecker.Net List Verification Sessions
+      description: List verification sessions for the account with optional filtering by date range and result.
+      tags:
+      - Sessions
+      parameters:
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: Start timestamp for filtering sessions.
+        example: '2025-03-15T14:30:00Z'
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: End timestamp for filtering sessions.
+        example: '2025-03-15T14:30:00Z'
+      - name: result
+        in: query
+        schema:
+          type: string
+          enum:
+          - pass
+          - fail
+          - pending
+        description: Filter sessions by result.
+        example: pass
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 100
+        description: Maximum number of sessions to return.
+        example: 1
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Offset for pagination.
+        example: 1
+      responses:
+        '200':
+          description: List of verification sessions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionList'
+              examples:
+                ListSessionsResponse:
+                  summary: List of sessions
+                  value:
+                    sessions:
+                    - session_id: sess_abc123def456
+                      status: completed
+                      result: pass
+                      created_at: '2026-04-19T10:00:00Z'
+                    total: 1
+                    limit: 100
+                    offset: 0
+                  x-microcks-default: true
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+    Session:
+      type: object
+      properties:
+        session_id:
+          type: string
+          description: Unique session identifier.
+          example: '500123'
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - expired
+          description: Current session status.
+          example: pending
+        result:
+          type: string
+          enum:
+          - pass
+          - fail
+          description: Verification result.
+          example: pass
+        age_verified:
+          type: boolean
+          description: Whether age was verified.
+          example: true
+        requires_photo_id:
+          type: boolean
+          description: Whether photo ID was required.
+          example: true
+        created_at:
+          type: string
+          format: date-time
+          description: When the session was created.
+          example: '2025-03-15T14:30:00Z'
+        completed_at:
+          type: string
+          format: date-time
+          description: When the session was completed.
+          example: '2025-03-15T14:30:00Z'
+    SessionList:
+      type: object
+      properties:
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+          example:
+          - example_value
+        total:
+          type: integer
+          description: Total number of matching sessions.
+          example: 1
+        limit:
+          type: integer
+          description: Page size.
+          example: 1
+        offset:
+          type: integer
+          description: Page offset.
+          example: 1
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for AgeChecker.Net API access.

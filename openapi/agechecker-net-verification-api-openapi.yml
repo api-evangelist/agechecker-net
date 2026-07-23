@@ -1,0 +1,199 @@
+openapi: 3.1.0
+info:
+  title: AgeChecker.Net Age Sessions Verification API
+  description: The AgeChecker.Net API provides seamless age verification for online transactions. Send customer data directly to verify age without requiring a popup for most customers. Only customers requiring photo ID will be prompted for additional verification.
+  version: '1.0'
+  contact:
+    name: AgeChecker.Net Support
+    url: https://agechecker.net/contact
+  termsOfService: https://agechecker.net/terms
+servers:
+- url: https://api.agechecker.net/v1
+  description: AgeChecker.Net API
+security:
+- apiKey: []
+tags:
+- name: Verification
+paths:
+  /verify:
+    post:
+      operationId: verify-age
+      summary: AgeChecker.Net Verify Age
+      description: Submit customer data for age verification. Returns pass/fail result and whether photo ID is required.
+      tags:
+      - Verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerificationRequest'
+            examples:
+              VerifyAgeRequest:
+                summary: Verify age request
+                value:
+                  first_name: John
+                  last_name: Doe
+                  birth_date: '1990-05-15'
+                  address: 123 Main St
+                  city: Springfield
+                  state: IL
+                  zip: '62701'
+                  email: john.doe@example.com
+                  ip_address: 192.168.1.1
+                x-microcks-default: true
+      responses:
+        '200':
+          description: Verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerificationResponse'
+              examples:
+                VerifyAgeResponse:
+                  summary: Successful verification response
+                  value:
+                    result: pass
+                    session_id: sess_abc123def456
+                    requires_photo_id: false
+                    age_verified: true
+                    minimum_age: 21
+                  x-microcks-default: true
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                verify-age400Example:
+                  summary: Default verify-age 400 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    message: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              examples:
+                verify-age401Example:
+                  summary: Default verify-age 401 response
+                  x-microcks-default: true
+                  value:
+                    error: example_value
+                    message: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    VerificationRequest:
+      type: object
+      required:
+      - first_name
+      - last_name
+      - birth_date
+      properties:
+        first_name:
+          type: string
+          description: Customer first name.
+          example: Example Name
+        last_name:
+          type: string
+          description: Customer last name.
+          example: Example Name
+        birth_date:
+          type: string
+          format: date
+          description: Customer date of birth (YYYY-MM-DD).
+          example: '2025-03-15'
+        address:
+          type: string
+          description: Street address.
+          example: example_value
+        city:
+          type: string
+          description: City.
+          example: example_value
+        state:
+          type: string
+          description: State or province code.
+          example: example_value
+        zip:
+          type: string
+          description: Postal/ZIP code.
+          example: example_value
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code.
+          default: US
+          example: example_value
+        email:
+          type: string
+          format: email
+          description: Customer email address.
+          example: admin@example.com
+        phone:
+          type: string
+          description: Customer phone number.
+          example: example_value
+        ip_address:
+          type: string
+          description: Customer's IP address.
+          example: example_value
+        minimum_age:
+          type: integer
+          description: Minimum age required (default is 21 for alcohol, 18 for tobacco).
+          default: 21
+          example: 1
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+    VerificationResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          enum:
+          - pass
+          - fail
+          - pending
+          description: Verification outcome.
+          example: pass
+        session_id:
+          type: string
+          description: Unique session identifier for this verification.
+          example: '500123'
+        requires_photo_id:
+          type: boolean
+          description: Whether the customer must upload a photo ID to complete verification.
+          example: true
+        age_verified:
+          type: boolean
+          description: Whether age was successfully verified.
+          example: true
+        minimum_age:
+          type: integer
+          description: The minimum age threshold checked.
+          example: 1
+        redirect_url:
+          type: string
+          description: URL to redirect customer if photo ID is required.
+          example: https://example.com
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for AgeChecker.Net API access.
