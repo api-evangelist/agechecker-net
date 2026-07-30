@@ -1,27 +1,42 @@
 aid: agechecker-net
 url: https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/apis.yml
 apis:
-  - aid: agechecker-net:agechecker-net-age-verification-api
-    name: AgeChecker.Net Age Verification API
-    tags:
-      - Age Verification
-      - Identity
-      - Compliance
-    humanURL: https://agechecker.net/age-verification-api
-    baseURL: https://api.agechecker.net/v1
-    properties:
-      - url: https://agechecker.net/age-verification-api
-        type: Documentation
-      - url: >-
-          https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/openapi/agechecker-net-age-verification-openapi.yml
-        type: OpenAPI
-    description: >-
-      The AgeChecker.Net Age Verification API provides seamless age verification for online transactions. Send customer
-      data directly to verify age without requiring a popup for most customers. Only customers requiring photo ID will
-      be prompted for additional verification.
-    contact:
-      - FN: AgeChecker.Net Support
-        url: https://agechecker.net/contact
+- aid: agechecker-net:agechecker-net-sessions-api
+  name: AgeChecker.Net Sessions API
+  description: The Sessions API from AgeChecker.Net — 2 operation(s) for sessions.
+  humanURL: https://agechecker.net/age-verification-api
+  baseURL: https://api.agechecker.net/v1
+  tags:
+  - Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/agechecker-net-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://agechecker.net/age-verification-api
+- aid: agechecker-net:agechecker-net-verification-api
+  name: AgeChecker.Net Verification API
+  description: The Verification API from AgeChecker.Net — 1 operation(s) for verification.
+  humanURL: https://agechecker.net/age-verification-api
+  baseURL: https://api.agechecker.net/v1
+  tags:
+  - Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/agechecker-net-verification-api-openapi.yml
+  - type: Documentation
+    url: https://agechecker.net/age-verification-api
+- aid: agechecker-net:agechecker-net-webhooks-api
+  name: AgeChecker.Net Webhooks API
+  description: The Webhooks API from AgeChecker.Net — 1 operation(s) for webhooks.
+  humanURL: https://agechecker.net/age-verification-api
+  baseURL: https://api.agechecker.net/v1
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/agechecker-net-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://agechecker.net/age-verification-api
 name: AgeChecker.Net
 tags:
   - Age Verification
@@ -30,7 +45,20 @@ tags:
   - Regulatory
   - E-Commerce
 kind: contract
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/agechecker-net.png
 access: 3rd-Party
 created: '2025-01-07'
 modified: '2026-05-19'
@@ -65,6 +93,8 @@ integrations:
   - Magento Age Check Integration
   - Custom E-Commerce Platform Integration
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/agecheckernet/overview
   - type: AgenticAccess
     url: agentic-access/agechecker-net-agentic-access.yml
   - type: DomainSecurity
