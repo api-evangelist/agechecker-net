@@ -1,0 +1,18 @@
+{
+  "provider": "agechecker-net",
+  "sources": [
+    "agechecker-net-sessions-api-openapi.yml",
+    "agechecker-net-verification-api-openapi.yml",
+    "agechecker-net-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "agechecker-net-sessions-api-openapi.yml",
+    "agechecker-net-verification-api-openapi.yml",
+    "agechecker-net-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
