@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AgeChecker.Net Age Sessions Verification API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AgeChecker.Net Verify Age",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.agechecker.net/v1/verify",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit customer data for age verification. Returns pass/fail result and whether photo ID is required."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

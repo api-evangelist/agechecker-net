@@ -1,0 +1,148 @@
+{
+  "item": [
+    {
+      "id": "7cc5b539-7591-490c-b8bd-f527e05dd5e0",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77f87c34-30bd-4aa1-8d61-3be16d284bcc",
+          "name": "AgeChecker.Net Configure Webhook",
+          "request": {
+            "name": "AgeChecker.Net Configure Webhook",
+            "description": {
+              "content": "Configure a webhook URL to receive verification result notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "webhook"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"url\": \"<string>\",\n  \"events\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"secret\": \"<string>\",\n  \"created_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42e98f53-a40d-4b7d-9a36-ebc882e847ec",
+              "name": "Webhook configured successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "webhook"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": \"https://yourapp.com/webhooks/agechecker\",\n  \"events\": [\n    \"verification.completed\",\n    \"verification.failed\"\n  ],\n  \"secret\": \"whsec_yoursecretkey\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"wh_xyz789\",\n  \"url\": \"https://yourapp.com/webhooks/agechecker\",\n  \"events\": [\n    \"verification.completed\",\n    \"verification.failed\"\n  ],\n  \"created_at\": \"2026-04-19T10:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.agechecker.net/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a51edde-f66c-434a-92c1-656698436051",
+    "name": "AgeChecker.Net Age Verification Sessions Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AgeChecker.Net API provides seamless age verification for online transactions. Send customer data directly to verify age without requiring a popup for most customers. Only customers requiring photo ID will be prompted for additional verification.\n\nContact Support:\n Name: AgeChecker.Net Support",
+      "type": "text/plain"
+    }
+  }
+}

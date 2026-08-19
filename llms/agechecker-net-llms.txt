@@ -1,0 +1,75 @@
+# AgeChecker.Net
+
+> AgeChecker.Net is an online age-verification service for e-commerce merchants selling age-restricted products. It verifies customers during checkout using identity-record matching, phone verification, government-issued photo ID review, configurable selfie-with-ID workflows, and other optional verification steps. More than 90% of customers are typically verified instantly using submitted identity and checkout information, while photo ID is commonly used when automatic verification is unsuccessful or when required by a merchant's configured workflow.
+
+AgeChecker.Net also offers an ID barcode scanning and validation solution for retail merchants, enabling in-store age verification at the point of sale by scanning a customer's government-issued ID barcode.
+
+AgeChecker.Net integrates with all major e-commerce platforms including Shopify, WooCommerce, BigCommerce, Magento, Lightspeed, and more. Merchants configure age requirements by geography (country, state, county, city, or ZIP code) using a built-in workflow editor with preset rule templates for tobacco, alcohol, ammunition, and other regulated industries.
+
+Verification methods include: instant database lookup against public records and identity networks, SMS phone validation, government-issued photo ID upload with AI-assisted OCR, selfie + ID matching, and electronic signature capture. Customers verified on one merchant's site are recognized across the network, reducing friction for repeat buyers.
+
+The service is used by businesses selling tobacco, alcohol, firearms accessories, ammunition, CBD, adult content, and other age-restricted goods, as well as by companies that need to verify the identity of an individual — such as financial institutions processing loan applications, rental services, and other organizations with identity or age confirmation requirements.
+
+## Core Pages
+
+- [Home](https://agechecker.net/): Overview of the service, how it works, key stats (90%+ instant verification rate, ~10s average ID check time, 24/7 customer support)
+- [Features](https://agechecker.net/features): Full feature breakdown — instant database verification, photo ID upload, phone verification, selfie + ID matching, fraud prevention, customizable workflow settings, and management dashboard
+- [Pricing](https://agechecker.net/pricing): $25/month base fee plus $0.50 per accepted verification; add-on pricing for ID scans, phone validation, selfie verification, and fraud risk assessments; volume discounts available; no setup fee or contracts
+- [About](https://agechecker.net/about): Company background and mission
+- [Age Verification Explained](https://agechecker.net/age-verification-explained): Educational content explaining why online age verification is legally required, what information is collected during checkout, how it is protected, and the difference between a simple age gate and full identity verification
+- [Free Age Gate](https://agechecker.net/age-gate): Free, customizable age gate tool — adds a simple age confirmation popup to any website; configurable minimum age, colors, and messaging with no account required
+
+## Developer Resources
+
+- [Age Verification API](https://agechecker.net/age-verification-api): REST API overview — send customer data server-side for seamless background verification; JavaScript widget with callbacks, custom colors, and platform integration hooks; API key and documentation access via merchant dashboard
+- [Demo](https://agechecker.net/demo): Live interactive demo of the verification popup widget
+- [Demo — ID Verification](https://agechecker.net/demo/id): Demonstrates the photo ID upload and AI-assisted verification flow
+- [Demo — Phone Verification](https://agechecker.net/demo/phone): Demonstrates the SMS phone verification step
+- [Demo — Selfie + Phone](https://agechecker.net/demo/selfie-phone): Demonstrates the combined selfie and phone verification flow
+- [Demo — Selfie](https://agechecker.net/demo/selfie): Demonstrates photo ID + selfie matching
+- [Demo — E-Signature](https://agechecker.net/demo/signature): Demonstrates the electronic signature capture step
+- [Demo — DOB + Phone API](https://agechecker.net/demo/dob-phone): Demonstrates the date-of-birth + phone API verification flow
+
+## Platform Landing Pages
+
+- [Platform Overview](https://agechecker.net/get-started-platforms): Choose your e-commerce platform to get a tailored overview of AgeChecker.Net's integration
+- [Shopify Age Verification](https://agechecker.net/get-started-platforms/shopify): AgeChecker.Net for Shopify — installation overview, features, and customizable settings
+- [WooCommerce Age Verification](https://agechecker.net/get-started-platforms/woocommerce): AgeChecker.Net for WooCommerce — integration overview and setup
+- [BigCommerce Age Verification](https://agechecker.net/get-started-platforms/bigcommerce): AgeChecker.Net for BigCommerce — integration overview and setup
+- [Magento Age Verification](https://agechecker.net/get-started-platforms/magento): AgeChecker.Net for Magento — integration overview and setup
+- [Lightspeed Age Verification](https://agechecker.net/get-started-platforms/lightspeed): AgeChecker.Net for Lightspeed — integration overview and setup
+- [Volusion Age Verification](https://agechecker.net/get-started-platforms/volusion): AgeChecker.Net for Volusion — integration overview and setup
+
+## Tools
+
+- [Age Gate Creator](https://agechecker.net/age-gate/create): Build and customize a free embeddable age gate
+- [Fraud Checker](https://agechecker.net/fraud-checker): On-demand fraud risk scoring tool — analyzes checkout data to produce a risk score from 1–999
+- [Retail ID Scanner](https://agechecker.net/id-scanner): In-store ID scanning product for retail locations performing age verification at point of sale
+
+## Support & FAQ
+
+- [FAQ — Verification Users](https://agechecker.net/faq): Frequently asked questions for customers going through age verification — why it is required, what data is collected, how to get help (phone: 1-888-276-2303, email: help@agechecker.net)
+- [FAQ — Merchants](https://agechecker.net/faq/merchant): Frequently asked questions for businesses integrating AgeChecker.Net
+- [Support](https://agechecker.net/support): Contact options — 24/7 phone and email support for end-users; free installation assistance
+
+## Blog
+
+- [Blog](https://agechecker.net/blog): Articles on age verification regulations, compliance requirements by state and industry, e-commerce best practices, and platform-specific integration guides
+
+## Legal & Privacy
+
+- [Terms of Service](https://agechecker.net/terms): Terms for end users going through the age verification process
+- [Terms for Merchants](https://agechecker.net/terms/customers): Terms of service for businesses using the AgeChecker.Net platform
+- [Privacy Policy — Verification](https://agechecker.net/privacy): Privacy policy covering data collected from customers during age verification
+- [Privacy Policy — Merchants](https://agechecker.net/privacy/customers): Privacy policy for merchant account holders
+- [Do Not Sell Or Share My Information](https://agechecker.net/do-not-sell): CCPA opt-out page for California residents
+- [Security](https://agechecker.net/security): Security practices overview — TLS encryption in transit and 256-bit AES encryption at rest, automatic deletion of photo ID images after verification, no sale or sharing of customer data
+
+## Optional
+
+- [Accessibility Statement](https://agechecker.net/accessibility): Accessibility commitment and contact for accommodation requests
+- [Branding](https://agechecker.net/branding): Brand assets and logo guidelines
+- [Get Started Guide](https://agechecker.net/get-started/1): Step-by-step onboarding walkthrough for new merchants
+- [Platform Selection Guide](https://agechecker.net/get-started-platforms): Choose your e-commerce platform to receive a tailored setup guide
+- [Sign Up](https://agechecker.net/signup): Create a merchant account — free trial available
+- [Sign In](https://agechecker.net/signin): Access the merchant dashboard
