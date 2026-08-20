@@ -31,6 +31,8 @@ apis:
   humanURL: https://agechecker.net/age-verification-api
   baseURL: https://api.agechecker.net/v1
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
