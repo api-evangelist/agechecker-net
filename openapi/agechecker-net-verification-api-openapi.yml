@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: AgeChecker.Net Age Sessions Verification API
+  title: AgeChecker.Net Age Verification API
   description: The AgeChecker.Net API provides seamless age verification for online transactions. Send customer data directly to verify age without requiring a popup for most customers. Only customers requiring photo ID will be prompted for additional verification.
   version: '1.0'
   contact:
@@ -90,6 +90,48 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
+    VerificationResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          enum:
+          - pass
+          - fail
+          - pending
+          description: Verification outcome.
+          example: pass
+        session_id:
+          type: string
+          description: Unique session identifier for this verification.
+          example: '500123'
+        requires_photo_id:
+          type: boolean
+          description: Whether the customer must upload a photo ID to complete verification.
+          example: true
+        age_verified:
+          type: boolean
+          description: Whether age was successfully verified.
+          example: true
+        minimum_age:
+          type: integer
+          description: The minimum age threshold checked.
+          example: 1
+        redirect_url:
+          type: string
+          description: URL to redirect customer if photo ID is required.
+          example: https://example.com
     VerificationRequest:
       type: object
       required:
@@ -149,48 +191,6 @@ components:
           description: Minimum age required (default is 21 for alcohol, 18 for tobacco).
           default: 21
           example: 1
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
-    VerificationResponse:
-      type: object
-      properties:
-        result:
-          type: string
-          enum:
-          - pass
-          - fail
-          - pending
-          description: Verification outcome.
-          example: pass
-        session_id:
-          type: string
-          description: Unique session identifier for this verification.
-          example: '500123'
-        requires_photo_id:
-          type: boolean
-          description: Whether the customer must upload a photo ID to complete verification.
-          example: true
-        age_verified:
-          type: boolean
-          description: Whether age was successfully verified.
-          example: true
-        minimum_age:
-          type: integer
-          description: The minimum age threshold checked.
-          example: 1
-        redirect_url:
-          type: string
-          description: URL to redirect customer if photo ID is required.
-          example: https://example.com
   securitySchemes:
     apiKey:
       type: apiKey

@@ -1,9 +1,7 @@
 {
   "provider": "agechecker-net",
   "sources": [
-    "agechecker-net-sessions-api-openapi.yml",
-    "agechecker-net-verification-api-openapi.yml",
-    "agechecker-net-webhooks-api-openapi.yml"
+    "_original/agechecker-net-age-verification-openapi.yml"
   ],
   "outputs": [
     "agechecker-net-sessions-api-openapi.yml",
@@ -13,6 +11,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "agechecker-net-age-verification-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "agechecker-net-age-verification-openapi.yml: declared missing tag: Sessions",
+    "agechecker-net-age-verification-openapi.yml: declared missing tag: Verification",
+    "agechecker-net-age-verification-openapi.yml: declared missing tag: Webhooks",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "agechecker-net-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agechecker-net-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "agechecker-net-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
