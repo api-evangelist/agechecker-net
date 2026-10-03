@@ -147,6 +147,27 @@ components:
           type: string
           description: Human-readable error message.
           example: example_value
+    SessionList:
+      type: object
+      properties:
+        sessions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Session'
+          example:
+          - example_value
+        total:
+          type: integer
+          description: Total number of matching sessions.
+          example: 1
+        limit:
+          type: integer
+          description: Page size.
+          example: 1
+        offset:
+          type: integer
+          description: Page offset.
+          example: 1
     Session:
       type: object
       properties:
@@ -187,27 +208,6 @@ components:
           format: date-time
           description: When the session was completed.
           example: '2025-03-15T14:30:00Z'
-    SessionList:
-      type: object
-      properties:
-        sessions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Session'
-          example:
-          - example_value
-        total:
-          type: integer
-          description: Total number of matching sessions.
-          example: 1
-        limit:
-          type: integer
-          description: Page size.
-          example: 1
-        offset:
-          type: integer
-          description: Page offset.
-          example: 1
   securitySchemes:
     apiKey:
       type: apiKey

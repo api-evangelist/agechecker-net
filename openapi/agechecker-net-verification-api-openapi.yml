@@ -90,6 +90,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    VerificationResponse:
+      type: object
+      properties:
+        result:
+          type: string
+          enum:
+          - pass
+          - fail
+          - pending
+          description: Verification outcome.
+          example: pass
+        session_id:
+          type: string
+          description: Unique session identifier for this verification.
+          example: '500123'
+        requires_photo_id:
+          type: boolean
+          description: Whether the customer must upload a photo ID to complete verification.
+          example: true
+        age_verified:
+          type: boolean
+          description: Whether age was successfully verified.
+          example: true
+        minimum_age:
+          type: integer
+          description: The minimum age threshold checked.
+          example: 1
+        redirect_url:
+          type: string
+          description: URL to redirect customer if photo ID is required.
+          example: https://example.com
     Error:
       type: object
       properties:
@@ -160,37 +191,6 @@ components:
           description: Minimum age required (default is 21 for alcohol, 18 for tobacco).
           default: 21
           example: 1
-    VerificationResponse:
-      type: object
-      properties:
-        result:
-          type: string
-          enum:
-          - pass
-          - fail
-          - pending
-          description: Verification outcome.
-          example: pass
-        session_id:
-          type: string
-          description: Unique session identifier for this verification.
-          example: '500123'
-        requires_photo_id:
-          type: boolean
-          description: Whether the customer must upload a photo ID to complete verification.
-          example: true
-        age_verified:
-          type: boolean
-          description: Whether age was successfully verified.
-          example: true
-        minimum_age:
-          type: integer
-          description: The minimum age threshold checked.
-          example: 1
-        redirect_url:
-          type: string
-          description: URL to redirect customer if photo ID is required.
-          example: https://example.com
   securitySchemes:
     apiKey:
       type: apiKey
