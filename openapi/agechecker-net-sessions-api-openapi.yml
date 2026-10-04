@@ -136,17 +136,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        error:
-          type: string
-          description: Error code.
-          example: example_value
-        message:
-          type: string
-          description: Human-readable error message.
-          example: example_value
     SessionList:
       type: object
       properties:
@@ -168,6 +157,17 @@ components:
           type: integer
           description: Page offset.
           example: 1
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error code.
+          example: example_value
+        message:
+          type: string
+          description: Human-readable error message.
+          example: example_value
     Session:
       type: object
       properties:
