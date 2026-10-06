@@ -76,7 +76,7 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/agechecker-net.png
 access: 3rd-Party
 created: '2025-01-07'
-modified: '2026-09-16'
+modified: '2026-10-06'
 position: Consuming
 description: AgeChecker.Net provides age verification API services for e-commerce businesses selling age-restricted
   products such as alcohol, tobacco, cannabis, and firearms. The API enables seamless background verification
@@ -107,6 +107,8 @@ integrations:
 - Magento Age Check Integration
 - Custom E-Commerce Platform Integration
 common:
+- url: https://agechecker.net/blog
+  type: Blog
 - type: Website
   url: https://agechecker.net
 - type: PostmanWorkspace
