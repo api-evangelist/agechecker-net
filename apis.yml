@@ -107,6 +107,12 @@ integrations:
 - Magento Age Check Integration
 - Custom E-Commerce Platform Integration
 common:
+- type: Plans
+  url: plans/agechecker-net-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/agechecker-net-rate-limits.yml
+- type: FinOps
+  url: finops/agechecker-net-finops.yml
 - url: https://agechecker.net/blog
   type: Blog
 - type: Website
