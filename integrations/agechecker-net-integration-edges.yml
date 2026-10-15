@@ -11,6 +11,7 @@ checked:
 - https://n8n.io/integrations/agechecker-net/
 - https://zapier.com/apps/agechecker-net/integrations
 - shopify/integrations/shopify-integration-edges.yml
+- wordpress/integrations/wordpress-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -32,4 +33,21 @@ edges:
   detected_by: mirror-platform-listings.py
   publisher_verified:
   - Built for Shopify
+- partner_name: WordPress (own)
+  partner: wordpress
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://wordpress.org/plugins/agecheckernet/
+  mirror_of: wordpress/integrations/wordpress-integration-edges.yml
+  apps:
+  - Age Verification for your checkout page. Verify your customer's identity
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: WordPress plugin
 templates: []
