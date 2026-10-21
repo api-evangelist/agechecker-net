@@ -28,3 +28,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: agechecker-net-bigcommerce-own
+  label: BigCommerce (own)
+  partner: bigcommerce
+  partner_name: BigCommerce (own)
+  category: Payments & Security, Age Verification & Compliance
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.bigcommerce.com/apps/agechecker-net-age-verification/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

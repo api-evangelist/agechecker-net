@@ -12,6 +12,7 @@ checked:
 - https://zapier.com/apps/agechecker-net/integrations
 - shopify/integrations/shopify-integration-edges.yml
 - wordpress/integrations/wordpress-integration-edges.yml
+- bigcommerce/integrations/bigcommerce-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -50,4 +51,21 @@ edges:
   detected: '2026-10-15'
   detected_by: mirror-platform-listings.py
   category: WordPress plugin
+- partner_name: BigCommerce (own)
+  partner: bigcommerce
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.bigcommerce.com/apps/agechecker-net-age-verification/
+  mirror_of: bigcommerce/integrations/bigcommerce-integration-edges.yml
+  apps:
+  - AgeChecker.Net
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Payments & Security, Age Verification & Compliance
 templates: []
