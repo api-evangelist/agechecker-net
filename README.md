@@ -1,4 +1,4 @@
-# AgeChecker.Net (agechecker-net)
+# AgeChecker.Net
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,68 +66,173 @@
 
 AgeChecker.Net provides age verification API services for e-commerce businesses selling age-restricted products such as alcohol, tobacco, cannabis, and firearms. The API enables seamless background verification for most customers and guided photo ID verification for those who cannot be automatically verified.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/apis.yml)
+**Areas:** Age Verification · Identity · Compliance · Regulatory · E-Commerce
 
-## Scope
+## AgeChecker.Net on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for AgeChecker.Net is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/agechecker-net/](https://apis.io/providers/agechecker-net/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Age Verification
-- Identity
-- Compliance
-- Regulatory
-- E-Commerce
+- [AgeChecker.Net Sessions API](https://apis.io/apis/agechecker-net/agechecker-net-sessions-api/) — The Sessions API from AgeChecker.Net — 2 operation(s) for sessions.
+- [AgeChecker.Net Verification API](https://apis.io/apis/agechecker-net/agechecker-net-verification-api/) — The Verification API from AgeChecker.Net — 1 operation(s) for verification.
+- [AgeChecker.Net Webhooks API](https://apis.io/apis/agechecker-net/agechecker-net-webhooks-api/) — The Webhooks API from AgeChecker.Net — 1 operation(s) for webhooks.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-07
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### AgeChecker.Net Age Verification API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The AgeChecker.Net Age Verification API provides seamless age verification for online transactions. Send customer data directly to verify age without requiring a popup for most customers. Only customers requiring photo ID will be prompted for additional verification.
+- [Agechecker Net Agentic Access](https://apis.io/agentic-access/agechecker-net/agechecker-net-agentic-access/)
 
-- **Human URL:** [https://agechecker.net/age-verification-api](https://agechecker.net/age-verification-api)
-- **Base URL:** `https://api.agechecker.net/v1`
+#### JSON Schema (5)
 
-#### Tags
+The data models the API reads and writes.
 
-- Age Verification
-- Identity
-- Compliance
+- [Session](https://apis.io/schemas/agechecker-net/age-verification-session/)
+- [SessionList](https://apis.io/schemas/agechecker-net/age-verification-session-list/)
+- [VerificationRequest](https://apis.io/schemas/agechecker-net/age-verification-verification-request/)
+- [VerificationResponse](https://apis.io/schemas/agechecker-net/age-verification-verification-response/)
+- [WebhookConfig](https://apis.io/schemas/agechecker-net/age-verification-webhook-config/)
 
-#### Properties
+#### JSON Structure (5)
 
-- [Documentation](https://agechecker.net/age-verification-api)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/openapi/agechecker-net-age-verification-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/agechecker-net-age-verification.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/agechecker-net-age-verification.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Age Verification Session List Structure](https://apis.io/json-structure/agechecker-net/age-verification-session-list-structure/)
+- [Age Verification Session Structure](https://apis.io/json-structure/agechecker-net/age-verification-session-structure/)
+- [Age Verification Verification Request Structure](https://apis.io/json-structure/agechecker-net/age-verification-verification-request-structure/)
+- [Age Verification Verification Response Structure](https://apis.io/json-structure/agechecker-net/age-verification-verification-response-structure/)
+- [Age Verification Webhook Config Structure](https://apis.io/json-structure/agechecker-net/age-verification-webhook-config-structure/)
 
-- [LinkedIn](https://www.linkedin.com/company/agechecker)
-- [Portal](https://agechecker.net)
-- [Getting Started](https://agechecker.net/age-verification-api)
-- [Terms of Service](https://agechecker.net/terms)
-- [Privacy Policy](https://agechecker.net/privacy)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/rules/agechecker-net-spectral-rules.yml)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-schema/agechecker-verification-request-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-schema/agechecker-verification-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-schema/agechecker-session-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/json-ld/agechecker-verification-context.jsonld)
-- [Example](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/examples/agechecker-verification-request-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/examples/agechecker-verification-response-example.json)
-- [Example](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/examples/agechecker-session-example.json)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/agechecker-net/refs/heads/main/vocabulary/agechecker-net-vocabulary.yaml)
-- [Integrations](https://agechecker.net/integrations)
-- [L L Ms Txt](https://agechecker.net/llms.txt)
+#### JSON-LD (1)
 
-## Maintainers
+Linked-data contexts for the provider's vocabulary.
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+- [Agechecker Net Age Context](https://apis.io/jsonld/agechecker-net/agechecker-net-age-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Agechecker Net Vocabulary](https://apis.io/vocabularies/agechecker-net/agechecker-net-vocabulary/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Age Verification Session Example](https://apis.io/examples/agechecker-net/age-verification-session-example/)
+- [Age Verification Session List Example](https://apis.io/examples/agechecker-net/age-verification-session-list-example/)
+- [Age Verification Verification Request Example](https://apis.io/examples/agechecker-net/age-verification-verification-request-example/)
+- [Age Verification Verification Response Example](https://apis.io/examples/agechecker-net/age-verification-verification-response-example/)
+- [Age Verification Webhook Config Example](https://apis.io/examples/agechecker-net/age-verification-webhook-config-example/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [AgeChecker.Net Age Verification API](https://apis.io/collections/agechecker-net/open-agechecker-net-age-verification/)
+- [AgeChecker.Net Age Verification Sessions API](https://apis.io/collections/agechecker-net/open-agechecker-net-sessions-api/)
+- [AgeChecker.Net Age Sessions Verification API](https://apis.io/collections/agechecker-net/open-agechecker-net-verification-api/)
+- [AgeChecker.Net Age Verification Sessions Webhooks API](https://apis.io/collections/agechecker-net/open-agechecker-net-webhooks-api/)
+- [AgeChecker.Net Age Verification Sessions API](https://apis.io/collections/agechecker-net/postman-agechecker-net-sessions-api/)
+- [AgeChecker.Net Age Sessions Verification API](https://apis.io/collections/agechecker-net/postman-agechecker-net-verification-api/)
+- [AgeChecker.Net Age Verification Sessions Webhooks API](https://apis.io/collections/agechecker-net/postman-agechecker-net-webhooks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [AgeChecker.Net — jsonschema rules](https://apis.io/rules/agechecker-net/agechecker-net-jsonschema-spectral-rules/)
+- [AgeChecker.Net API Rules](https://apis.io/rules/agechecker-net/agechecker-net-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Agechecker Net Authentication](https://apis.io/security/agechecker-net/agechecker-net-authentication/)
+- [Agechecker Net Domain Security](https://apis.io/security/agechecker-net/agechecker-net-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Agechecker Net Plans Pricing](https://apis.io/plans/agechecker-net/agechecker-net-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Agechecker Net Rate Limits](https://apis.io/rate-limits/agechecker-net/agechecker-net-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Agechecker Net Finops](https://apis.io/finops/agechecker-net/agechecker-net-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://agechecker.net)
+- [Getting started](https://agechecker.net/age-verification-api)
+- [Blog](https://agechecker.net/blog)
+- [Terms of service](https://agechecker.net/terms)
+- [Privacy policy](https://agechecker.net/privacy)
+
+## API Evangelist rating
+
+**Kin Score 43.2** — developing · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 63.3 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 46.4 |
+| Access clarity | 28.9 |
+
+**Agent readiness 28.7** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/agechecker-net/](https://apis.io/providers/agechecker-net/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for AgeChecker.Net: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/agechecker-net/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
