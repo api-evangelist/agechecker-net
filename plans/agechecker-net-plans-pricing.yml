@@ -1,0 +1,44 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://agechecker.net/pricing
+sources:
+- https://agechecker.net/pricing
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T161713
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: per-call
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: 'Single plan: $25/month platform fee plus 50¢ per accepted verification; volume discounts available
+  on request. Free age gate offered at no cost.'
+plan_count: 1
+currency: USD
+plans:
+- name: Standard
+  price_text: $25 per month + 50¢ per accepted verification
+  currency: USD
+  period: month
+  unit: accepted verification
+  included_quota: Only pay for accepted verifications; free installation, no setup fee
+  overage: 50¢ per accepted verification
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - metered
+  units: []
+  plans:
+  - name: Standard
+    access: other
+    model: metered
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
