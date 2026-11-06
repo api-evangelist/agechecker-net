@@ -28,7 +28,7 @@ plans:
   included_quota: Only pay for accepted verifications; free installation, no setup fee
   overage: 50¢ per accepted verification
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - metered
